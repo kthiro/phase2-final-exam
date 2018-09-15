@@ -1,0 +1,26 @@
+<div class="panel panel-warning">
+  <h1 class="panel-heading">ひとりごとの確認</h1>
+  <div class="panel-body">
+    <div class="panel panel-default">
+      <%= form_with(model: @monologue, local: true) do |f| %>
+    
+        <div class="panel-body">
+          <%= f.hidden_field :content %>
+  
+          <p><%= @monologue[:content] %></p>
+        </div>
+        <div class="panel-footer">
+          <%= f.submit 'この内容で登録する', class: "btn btn-primary" %>
+        </div>
+      <% end %>
+  
+      <%= form_with(model: @monologue, local: true, url: new_monologue_path, method: 'get') do |f| %>
+        <div class="panel-footer">
+          <%= f.hidden_field :content %>
+          <%= f.submit '戻って内容を修正する', name: 'back', class: "btn btn-default" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+

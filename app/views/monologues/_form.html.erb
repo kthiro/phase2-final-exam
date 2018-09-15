@@ -1,0 +1,17 @@
+<%= form_with(model: @monologue, local: true, url: choose_new_or_edit) do |f| %>
+  <% if @monologue.errors.any? %>
+    <div class="alert alert-danger", role="alert">
+      <div>入力内容に誤りがあります！</div>
+      <ul>
+        <% @monologue.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.text_area :content, class: "form-control", placeholder: "ひとりごとを記入してください" %>
+  <br>
+  <%= f.submit '登録する', class: "btn btn-default" %>
+  
+<% end %>

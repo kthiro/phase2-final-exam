@@ -1,0 +1,27 @@
+<div class="panel panel-info">
+  <h2 class="panel-heading">ひとりごと一覧</h2>
+  <div class="panel-body">
+    <% if notice %>
+      <h4 class="alert alert-danger" role="alert"><%= notice %></h4>
+    <% end %>
+
+    <ul class="list-group">
+      <% @monologues.each do |monologue| %>
+        <li class="list-group-item">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <strong><%= monologue[:content] %></strong>
+              <br><br>
+              <small>作成日時：<%= monologue[:created_at] %>　　更新日時：<%= monologue[:updated_at] %></small>
+              
+            </div>
+            <div class="panel-footer">
+              <%= link_to 'ひとりごとを編集する', edit_monologue_path(monologue[:id]), method: 'get', class: "btn btn-success" %>
+              <%= link_to 'ひとりごとを削除する', monologue_path(monologue[:id]), method: 'delete', data: {confirm: '本当に削除してよろしいですか？'}, class: "btn btn-danger" %>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
